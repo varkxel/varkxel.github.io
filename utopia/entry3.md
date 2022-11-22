@@ -1,4 +1,4 @@
-# Entry 3 - Mask improvements
+# Entry 3 - Mask Improvements, Intrinsics and Smoothing
 ## Normalisation of the mask extents
 The first thing I implemented this week was a method to normalise the extents in order to keep the island to scale.
 As this needed to read through the entire array and read/write a variable for each array access,
