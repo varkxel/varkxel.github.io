@@ -45,3 +45,18 @@ Originally, I wanted to generate the indices in parallel, though my original imp
 
 ![Implementation Issues Pt1](./entry5/implementation_broken_1.png)
 ![Implementation Issues Pt2](./entry5/implementation_broken_2.png)
+
+Part of the issue was that I was generating the wrong indicies order.
+After playing about with other ways of generating the indices,
+I ended up writing a quick serial version as a standard job instead of the parallel method.
+This was in order for me to work on other areas of the project and get more done in the meantime.
+In the future, I could swap this out for a parallel version without much headache
+for what would most likely be a good performance increase.
+
+This was the final result after fixing the indices generation:
+
+![Final Mesh Result](./entry5/mesh_result.png)
+
+# What's Next?
+Now that mesh generation is complete, I will move onto biome blending in the next week.
+This will be in order to prepare for texture generation, if there is the time to implement it.
