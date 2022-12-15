@@ -12,7 +12,9 @@ Minor road connections would be generated between these smaller towns either to 
 Roads could also utilise turbulence and/or contours of the heightmap to generate.
 
 An example of turbulence:
+
 ![Example of Turbulence](./entry1/turbulence.png)
+
 Image Source - [The Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe](https://thebookofshaders.com/13/)
 
 ## Utilising Burst / the Job System
@@ -48,6 +50,7 @@ which can then be interpreted as a property for the terrain - such as a biome ma
 However, a single layer of Simplex Noise can look unrealistic and flat, due to its lack of detail.
 
 ![Simplex Noise](./entry1/simplex_noise.png)
+
 Image Source - [The Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe](https://thebookofshaders.com/11/)
 
 This problem can be overcome by adding more layers (octaves) of Simplex Noise, at different scales and amplitudes.
@@ -55,7 +58,9 @@ This has the effect of adding extra detail into the terrains,
 making it look more natural instead of just being rolling hills and valleys.
 
 An example of Simplex Fractal Noise:
+
 ![Simplex Fractal Noise](./entry1/fractal_simplex_noise_example.png)
+
 Image Source - [The Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe](https://thebookofshaders.com/13/)
 
 This is a similar concept to how sound is composed of only layered sine waves of different wavelengths.
