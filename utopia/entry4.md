@@ -23,7 +23,7 @@ Overall, this was the end result:
 
 ![Final Noise](./entry4/final_noise.png)
 
-## Biomes
+# Biomes
 For the rest of the week, I started work on a biome system for the world generator.
 
 As different climates in the real world are caused by different phenomena,
@@ -33,7 +33,11 @@ These spawning methods would then be ordered in a list,
 that are executed in order overwriting the map.
 
 I have implemented two spawning methods for now to start with:
-* A global spawn rule, that overwrites the entire map.
-* A noise spawn rule, that overwrites the map above or below a given threshold.
 
-This implementation will also allow for easy further extension in the future.
+* A global spawn rule, that overwrites the entire map.
+* A noise spawn rule, that overwrites the map above or below a given threshold:
+
+![Biome Noise Rule Example](./entry4/biome_noise_rule.png)
+
+This implementation will also allow for easy further extension in the future
+and should be user-friendly enough to modify in-editor.
