@@ -19,7 +19,7 @@ so not all the values are available as not all chunks are generated.
 The randomised offsets were also clamped to a more sensible range
 since artefacts were creeping in from floating point precision issues.
 
-Overall, this is what the end result of the noise was:
+Overall, this was the end result:
 
 ![Final Noise](./entry4/final_noise.png)
 
