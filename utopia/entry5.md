@@ -38,3 +38,10 @@ This should be quite quick to (re-)implement if needed though.
 
 # Mesh Generation
 I started to tackle the actual mesh generation this week to try and finish off the basics of the project.
+
+This involved writing a set of jobs to calculate the vertices and indices of the mesh.
+
+Originally, I wanted to generate the indices in parallel, though my original implementation had issues:
+
+![Implementation Issues Pt1](./entry5/implementation_broken_1.png)
+![Implementation Issues Pt2](./entry5/implementation_broken_2.png)
