@@ -5,3 +5,4 @@ This is a set of procedural tools designed to generate maps for a future open wo
 * [Entry 2 - Mask Implementation](./entry2.md)
 * [Entry 3 - Mask Improvements, Intrinsics and Smoothing](./entry3.md)
 * [Entry 4 - Inspectors & Biome Work](./entry4.md)
+* [Entry 5 - Finishing up Biomes & Mesh Generation](./entry5.md)
