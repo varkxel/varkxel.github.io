@@ -44,9 +44,8 @@ meaning it does not allocate on the heap (reducing Garbage Collection) and also 
 Developing a world generator to these requirements will be an interesting challenge and a huge learning experience.
 
 ## Creating the terrain
-To generate the terrain, I will use the afformentioned Simplex Fractal Noise.
-Simplex Noise offers a smooth and natural looking texture,
-which can then be interpreted as a property for the terrain - such as a biome map or height map.
+To generate the terrain, I will use the afformentioned Simplex Fractal Noise,
+as it offers a smooth and natural looking texture which can then be interpreted as a property for the terrain - such as a biome map or height map.
 However, a single layer of Simplex Noise can look unrealistic and flat, due to its lack of detail.
 
 ![Simplex Noise](./entry1/simplex_noise.png)
@@ -57,7 +56,7 @@ This problem can be overcome by adding more layers (octaves) of Simplex Noise, a
 This has the effect of adding extra detail into the terrains,
 making it look more natural instead of just being rolling hills and valleys.
 
-An example of Simplex Fractal Noise:
+An example of Simplex Fractal Noise (as Fractal Brownian Motion):
 
 ![Simplex Fractal Noise](./entry1/fractal_simplex_noise_example.png)
 
