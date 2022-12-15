@@ -28,4 +28,12 @@ For the rest of the week, I started work on a biome system for the world generat
 
 As different climates in the real world are caused by different phenomena,
 I decided that an abstract class design for the biomes would be best.
-This would also allow for easy further extension in the future.
+Each different spawning method would have its own implementation extending the abstract class.
+These spawning methods would then be ordered in a list,
+that are executed in order overwriting the map.
+
+I have implemented two spawning methods for now to start with:
+* A global spawn rule, that overwrites the entire map.
+* A noise spawn rule, that overwrites the map above or below a given threshold.
+
+This implementation will also allow for easy further extension in the future.
