@@ -100,7 +100,8 @@ Overall, the past few weeks were mostly about getting the base shapes of the isl
 which has now been achieved.
 
 ## Steps for the future
+* Alter the mask generation settings in order to make more convincing island shapes.
 * The min/max function could be improved by tuning the 1D smooth noise function to always return a value between 0 and 1.
 * Could add jitter to the vertex shader for more randomness on the shape of the island.
-* Could add a blur image effect shader to the result whilst it's on GPU VRAM.
+* Could add a blur image effect shader to the result whilst it's on GPU VRAM. This would add very little cost.
 * Do more profiling in the future to remove bottlenecks.

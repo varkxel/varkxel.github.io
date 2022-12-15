@@ -1,7 +1,7 @@
 # Entry 2 - Mask Implementation
 ## 1D Noise
-After reading through the [book of shaders](https://thebookofshaders.com/10/)' section about randomness and noise,
-I developed an implementation of a smooth 1D noise algorithm in Burst.
+After reading through the [Book of Shaders](https://thebookofshaders.com/10/)' section about randomness and noise,
+I developed a simple implementation of a smooth 1D noise algorithm in Burst, to use for the mask's mesh generation.
 
 ## Implementation finished with issues
 The implementation was also finished this week, but it has a few issues.
