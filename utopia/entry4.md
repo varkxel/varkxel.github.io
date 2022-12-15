@@ -10,7 +10,7 @@ pack the result into a texture, then display that texture below the default insp
 
 I then used this to test the noise algorithms and biome generator, which helped development.
 
-## Noise fixes & normalisation
+## Noise fixes & Normalisation
 From using the new inspector, I tweaked the noise algorithm to always generate values between 0 and 1,
 removing the need to run a normalisation step after generation.
 This was required because of the fact that the world is generated in chunks,
