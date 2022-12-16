@@ -62,4 +62,13 @@ which I might do given enough time.
 Currently, the result of the mesh generator has 1m wide seams at the edge of each chunk.
 This is due to the fact that the meshes are being generated 0-127, then 128-255, given a size 128.
 
-## Currently working on this now, sorry!
+Blending the meshes together isn't as simple as just adding 1 to the meshes,
+as state doesn't exist between the chunks and the seams still exist.
+
+The heightmap either needs to be blended between each chunk in an aditional step,
+or the issue causing the same points in the heightmap not being consistent needs to be fixed.
+
+The option taken should be decided with more debugging, which procedural texturing would solve
+since different maps (biome, etc) could be passed to the shader for debugging what was causing the issue.
+My hunch is that the biome maps being calculated from a different side first is causing
+the priority of the highest weighted biomes to be changed, meaning different blended biome weightings.
