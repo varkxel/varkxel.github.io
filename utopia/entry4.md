@@ -7,7 +7,21 @@ I decided to revert back to the built-in pipeline.
 This fixed the issue and support for a Scriptable Render Pipeline can always be added back in the future.
 
 # Gradient Fragment Shader
+This week I also decided to add a gradient effect to the island mask to try and make
+the transition between the sea and island more natural.
 
+To do this, I added a step to the fragment shader that creates a box pattern gradient
+which goes from 0 at the edges to 1 in the centre, using the UV.
+An ocean level parameter and land level parameter were also added which scales this pattern.
+
+The end result ends up looking like this:
+
+![Mask with Gradient](./entry4/mask_with_gradient.png)
+
+In the future I'd try to find a way to apply this pattern in the shape of the mesh to further help
+the mask blend naturally between land and ocean.
+This might be possible by generating normals in the direction of the angles.
+A circular gradient might also work better as the generated meshes are usually circular in shape.
 
 # Async texture fetch
 The result texture is now fetched asynchronously from the GPU with a callback,
