@@ -43,3 +43,26 @@ since each sample can fit neatly into an XMM register.
 The first thing I did to implement this new system was change the biome's current spawn function to act
 more like a weighting function.
 Now upon generating the biome map, the weights of all biomes are collected into a large sliced up array.
+
+### Packing
+After the biome's map is generated, it is passed into a "packing" job.
+This job will check if the biome's map is greater than all the values at the given sample in the overall biome map.
+If the biome weight is greater than any biome already in the sample,
+it will overwrite the lowest biome in the sample.
+
+### Applying Biomes to the Heightmap
+#### A thread-safe AnimationCurve
+One of the problems I faced with the new parallel biome system was the fact that AnimationCurves are not value types.
+This means that they're not thread safe or compatible with the Job system or Burst.
+
+From reading a forum post [here](https://forum.unity.com/threads/need-way-to-evaluate-animationcurve-in-the-job.532149/)
+and 5argon's repository [here](https://github.com/5argon/JobAnimationCurve),
+I implemented the cubic hermite spline function and wrote a wrapper
+to grab the keyframes from the AnimationCurve and store them in NativeArrays so that the job can sample them.
+
+This ended up taking a lot longer than expected due to me trying different approaches
+and at one point trying to make my own AnimationCurve editor,
+but this approach ended up working best.
+
+#### Blending the Biomes
+
