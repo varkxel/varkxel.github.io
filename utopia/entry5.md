@@ -1,62 +1,43 @@
-# Entry 5 - Finishing up Biomes & Mesh Generation
-## Extending the inspector to masks
-Since there are multiple assets that generate textures,
-I made a generic "texture inspector" that each type could extend from.
-It works in the same way across all the inspectors, cutting down on duplicate code.
+# Entry 5 - Inspectors & Biome Work
+## Biome Inspector
+This week was mostly spent implementing an inspector for the biome map to view the noise maps
+and help with the development of the biomes.
 
-Having more generated textures being visible has helped with customizing/fixing other bits of the code, so this has definitely been worth the effort.
+The implementation was just a simple script to run the biome generator,
+pack the result into a texture, then display that texture below the default inspector.
 
-## Finishing off the Biomes
-This week was mostly spent trying to finish off the biome implementation.
-This involved creating a seperate asset to store the biome list in and handle the biome map generation, along with a custom preview inspector:
+![Biome Inspector](./entry5/biome_inspector.png)
 
-![Biome Map Inspector](./entry5/biomemap_inspector.png)
+I then used this to test the noise algorithms and biome generator, which helped development.
 
-Each colour is a different spawned biome, black being a global "Ocean" biome,
-and the other two colours being noise biomes that are spawned with the same noise map
-but at different thresholds.
+## Noise fixes & Normalisation
+From using the new inspector, I tweaked the noise algorithm to always generate values between 0 and 1,
+removing the need to run a normalisation step after generation.
+This was required because of the fact that the world is generated in chunks,
+so not all the values are available as not all chunks are generated.
 
-### Storing the offsets for the noise maps
-A lot of the issues I was facing this week were caused by figuring out
-how to store the octave offsets for the noise maps.
-This turned out to be a fairly major challenge if I wanted the previews to work in-editor,
-due to how SerializedObjects are created/destroyed, destroying the stored offsets.
+The randomised offsets were also clamped to a more sensible range
+since artefacts were creeping in from floating point precision issues.
 
-The end result was that the previews now only work in play mode,
-and a special noise map asset to allow re-use of the same noise map for different purposes.
+Overall, this was the end result:
 
-![Non-Playmode Inspector Dialog](./entry5/inspector_dialog.png)
+![Final Noise](./entry5/final_noise.png)
 
-# Origin Shifting
-I also started researching origin shifting as a way of getting around
-the floating point precision issue of the large terrains.
-I made a quick implementation where all the children of the shift gameobject shift back by
-an amount once the given transform reaches the shift boundary,
-but decided not to put it into the project.
-This was due to the increased complexity and to focus on the higher priority areas of the project.
-This should be quite quick to (re-)implement if needed though.
+# Biomes
+For the rest of the week, I started work on a biome system for the world generator.
 
-# Mesh Generation
-I started to tackle the actual mesh generation this week to try and finish off the basics of the project.
+As different climates in the real world are caused by different phenomena,
+I decided that an abstract class design for the biomes would be best.
+Each different spawning method would have its own implementation extending the abstract class.
+These spawning methods would then be ordered in a list,
+that are executed in order overwriting the map.
 
-This involved writing a set of jobs to calculate the vertices and indices of the mesh.
+I have implemented two spawning methods for now to start with:
 
-Originally, I wanted to generate the indices in parallel, though my original implementation had issues:
+* A global spawn rule, that overwrites the entire map.
+* A noise spawn rule, that overwrites the map above or below a given threshold:
 
-![Implementation Issues Pt1](./entry5/implementation_broken_1.png)
-![Implementation Issues Pt2](./entry5/implementation_broken_2.png)
+![Biome Noise Rule Example](./entry5/biome_noise_rule.png)
 
-Part of the issue was that I was generating the wrong indicies order.
-After playing about with other ways of generating the indices,
-I ended up writing a quick serial version as a standard job instead of the parallel method.
-This was in order for me to work on other areas of the project and get more done in the meantime.
-In the future, I could swap this out for a parallel version without much headache
-for what would most likely be a good performance increase.
-
-This was the final result after fixing the indices generation:
-
-![Final Mesh Result](./entry5/mesh_result.png)
-
-# What's Next?
-Now that mesh generation is complete, I will move onto biome blending in the next week.
-This will be in order to prepare for texture generation, if there is the time to implement it.
+This implementation will also allow for easy further extension in the future
+and should be user-friendly enough to modify in-editor.

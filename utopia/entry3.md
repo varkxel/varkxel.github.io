@@ -91,10 +91,6 @@ I can add in a step in the fragment shader that applies a simple gradient over t
 
 This adds next to no overhead and runs entirely on the GPU, without even the need for a compute shader.
 
-## Async texture fetch
-The result texture is now fetched asynchronously from the GPU with a callback,
-removing the main hitch from the generation method being called.
-
 # Wrapping up
 Overall, the past few weeks were mostly about getting the base shapes of the island to look correct,
 which has now been achieved.

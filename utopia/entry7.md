@@ -1,0 +1,45 @@
+# Entry 7 - Biome Revamp (Now with Blending!)
+This week I decided to try and implement blending on the biomes
+and generally speed up the entire system where possible,
+as the current implementation is limited to running on / blocking the main thread.
+
+# Stopping the biome generation from blocking the main thread
+The original implementation blocked the main thread while the biome map generates.
+This caused a bottleneck in the generation code and was the biggest contributor to generation time.
+
+![World Gen Profiler Output Pre-Async](./entry7/biomes_profiler_pre_async.png)
+
+To fix this, I made the biome spawner take in the previous biome's spawner JobHandle.
+This allowed each spawner to set the previous one as a dependency,
+allowing the whole spawner chain to run in the background without blocking the main thread.
+
+This change in operation will tie well into the biome revamp.
+
+# The Biome Revamp
+This was a huge task and ended up taking way longer than I originally thought it would.
+Originally, the task was to just add blending between the biomes.
+The issue preventing me from doing so with the current system was how I would store the weighting / blending data.
+
+With the current system, the biomes are stored as a 2D array of integers,
+referring to the biome's index in the lookup array.
+This makes it impossible to store blending data in the biome map,
+as there's only one biome being stored, and no weighting data.
+
+## Design of the new solution
+To solve this, I decided to change the way the biomes are stored.
+The integer array was swapped to a float4 array,
+allowing the 4 highest weighted biomes at any point to be stored with weights.
+The integer component of the float will still correspond to the biome index in the array like previously.
+However, the fractional component of the float will be used to store the weighting of that biome.
+
+### Performance considerations
+Overall, this may take longer to generate the biome map as there's an additional packing step,
+but will most likely save on memory and bandwidth
+(and VRAM if doing procedural texturing on the GPU using the data).
+The Vector4 format also allows the CPU to more easily perform operations in parallel on the biome data,
+since each sample can fit neatly into an XMM register.
+
+## Implementation
+The first thing I did to implement this new system was change the biome's current spawn function to act
+more like a weighting function.
+Now upon generating the biome map, the weights of all biomes are collected into a large sliced up array.

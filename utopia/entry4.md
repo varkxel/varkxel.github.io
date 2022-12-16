@@ -1,43 +1,13 @@
-# Entry 4 - Inspectors & Biome Work
-## Biome Inspector
-This week was mostly spent implementing an inspector for the biome map to view the noise maps
-and help with the development of the biomes.
+# Entry 4 - Mask Transform Fix, Gradient Fragment Shader & Async Texture Fetch
+# Mask Transform Fix (Removal of HDRP)
 
-The implementation was just a simple script to run the biome generator,
-pack the result into a texture, then display that texture below the default inspector.
+# Gradient Fragment Shader
 
-![Biome Inspector](./entry4/biome_inspector.png)
 
-I then used this to test the noise algorithms and biome generator, which helped development.
+# Async texture fetch
+The result texture is now fetched asynchronously from the GPU with a callback,
+removing the main hitch from the generation method being called.
 
-## Noise fixes & Normalisation
-From using the new inspector, I tweaked the noise algorithm to always generate values between 0 and 1,
-removing the need to run a normalisation step after generation.
-This was required because of the fact that the world is generated in chunks,
-so not all the values are available as not all chunks are generated.
-
-The randomised offsets were also clamped to a more sensible range
-since artefacts were creeping in from floating point precision issues.
-
-Overall, this was the end result:
-
-![Final Noise](./entry4/final_noise.png)
-
-# Biomes
-For the rest of the week, I started work on a biome system for the world generator.
-
-As different climates in the real world are caused by different phenomena,
-I decided that an abstract class design for the biomes would be best.
-Each different spawning method would have its own implementation extending the abstract class.
-These spawning methods would then be ordered in a list,
-that are executed in order overwriting the map.
-
-I have implemented two spawning methods for now to start with:
-
-* A global spawn rule, that overwrites the entire map.
-* A noise spawn rule, that overwrites the map above or below a given threshold:
-
-![Biome Noise Rule Example](./entry4/biome_noise_rule.png)
-
-This implementation will also allow for easy further extension in the future
-and should be user-friendly enough to modify in-editor.
+This works by creating a callback that copies the texture into a NativeArray
+once the CPU has downloaded the RenderTexture.
+A callback can also be provided to the method which is called once the RenderTexture has been downloaded.
