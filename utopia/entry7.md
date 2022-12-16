@@ -65,4 +65,21 @@ and at one point trying to make my own AnimationCurve editor,
 but this approach ended up working best.
 
 #### Blending the Biomes
+To blend the biomes together, I sampled the fractional part of the biome maps,
+discarded any biomes from being considered over the blending threshold,
+multiplied the AnimationCurve samples by the weights,
+then took the average of the multiplied samples.
+The heightmap is then multiplied by this final multiplier map at the end of the job.
 
+## Result
+The result seems to work very well,
+as shown from this very exaggerated test between a very low biome and a very mountainous biome:
+
+![Mountain / Plains Blend Test](./entry7/biome_blending.png)
+
+There's still very obvious seams in the mesh generation at the moment
+as I haven't yet wrote the code to stitch them together, which will be next week's priority.
+
+Overall, I'm very happy with how this biome revamp has turned out.
+The data structure will also be very easy to pass to and sample from the GPU
+and could allow me to implement procedural texturing via the biome map and a Texture Array.
