@@ -1,74 +1,54 @@
-# Entry 8 - Slight performance improvements & Fixing the seams
-# Replacing old Scalar Code
-One of the small tasks I decided to tackle was a part of the packing job that refused to be vectorised by Burst.
-Specifically, the code that makes sure that only one element gets replaced
-in the biome map if the weight is greater than multiple entries.
-
-The old code relied on scalar variables like so:
-
-```CSharp
-bool4 replace = isGreater & smallestWeight;
-bool replaced = false;
-for(int i = 0; i < 4; i++)
-{
-	replace[i] &= !replaced;
-	replaced |= replace[i];
-}
-```
-
-This created a bottleneck in the code that I wasn't expecting and I thought I could do better than the compiler's result.
-
-To improve on this, I thought that the same task could be implemented
-by comparing the vector with an AND operation a flipped right-shifted version of itself.
-This would be possible in normal C# and I probably will make a non-SSE implementation in pure C#,
-but for ease of implementation I decided to write it with SSE2 intrinsics
-as I had the implementation idea in my head:
-
-```CSharp
-[BurstCompile]
-static void MakeUnique(in v128 vec, out v128 result)
-{
-	result = vec;
-
-	// Create xor mask to flip the bool vector
-	v128 mask = new v128(1u, 1u, 1u, 1u);
-
-	v128 shifted = vec;
-	for(uint i = 0; i < 3; i++)
-	{
-		// Shift vector values right to next element
-		shifted = srli_si128(shifted, 4);
-
-		// Flip the shifted vector
-		v128 flipped = xor_si128(shifted, mask);
-
-		// Compare against result
-		result = and_si128(result, flipped);
-	}
-}
-```
-
-The Burst compiler was then able to unroll this loop and convert it into a set of completely vectorised instructions:
-
-![MakeUnique Assembly Output](./entry8/makeunique_assembly.png)
-
-## Nice. But why bother?
-This was done more as a further personal exercise rather than explicitly for performance.
-I enjoyed the exercise and it brought a performance gain.
-Though currently, the biggest performance gain will come from making the mesh index generator parallel -
-which I might do given enough time.
-
+# Entry 8 - Attempted seam fix & Biome Texture Blending
 # Fixing the mesh seams
 Currently, the result of the mesh generator has 1m wide seams at the edge of each chunk.
 This is due to the fact that the meshes are being generated 0-127, then 128-255, given a size 128.
 
 Blending the meshes together isn't as simple as just adding 1 to the meshes,
 as state doesn't exist between the chunks and the seams still exist.
-
 The heightmap either needs to be blended between each chunk in an aditional step,
 or the issue causing the same points in the heightmap not being consistent needs to be fixed.
 
-The option taken should be decided with more debugging, which procedural texturing would solve
-since different maps (biome, etc) could be passed to the shader for debugging what was causing the issue.
-My hunch is that the biome maps being calculated from a different side first is causing
-the priority of the highest weighted biomes to be changed, meaning different blended biome weightings.
+Having tested the biome maps with the biome texture blending section below,
+the problem definitely lies within the noisemap generation
+and most likely will have to be fixed in the future after the deadline.
+
+# Biome Texture Blending
+## Design of the Implementation
+The main task this week was to extend the biome blending to the texturing of the terrain.
+
+The approach I decided to use for the texturing would be to do it in real time in a shader.
+This is because the textures would remain in memory as-is and no extra VRAM
+would have to be used to generate chunk-specific textures,
+which would be the case in a Compute Shader.
+
+This would be possible through the use of Texture2DArrays,
+which are effectively 3D textures where the 3rd dimension is which layer in the array.
+The texture of each biome will be added to the array at the biome's index
+so that the indices in the biome map can look up the textures in the array.
+
+Blending would be done similarly to the heightmap blending,
+though float4s (colours) would be blended rather than a float (heightmap).
+
+## The Implementation
+I started the implementation by translating the heightmap blending code to HLSL
+and writing the basic boilerplate shader code to transform
+Object Space to Clip space and pass UVs to the fragment shader.
+
+The biome map data will be passed per-vertex into the shader rather than as a big buffer,
+since this was easier to implement and makes more sense to me.
+
+Next up was working on the C# side of the implementation.
+This involved iterating through the biomes and copying the
+textures from each biome into the texture array.
+This only has to be performed on initialisation of the biome map.
+
+Overall, this was the result for now:
+
+![Procedural Texturing](./entry8/initial_texturing.png)
+
+This shows that all the data is being passed and is working correctly,
+though more testing is needed - along with using the UVs of the texture.
+
+# What next?
+Next week will mostly be focused on code cleanup and fixes ready for the deadline.
+Procedural texturing will also have some improvements done to it if there is enough time.

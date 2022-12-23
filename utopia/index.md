@@ -8,5 +8,5 @@ This is a set of procedural tools designed to generate maps for a future racing 
 * [Entry 5 - Inspectors & Biome Work](./entry5.md)
 * [Entry 6 - Finishing up Biomes & Mesh Generation](./entry6.md)
 * [Entry 7 - Biome Revamp (Now with Blending!)](./entry7.md)
-* [Entry 8 - Slight performance improvements & Fixing the seams](./entry8.md)
-* [Entry 9 - Refractoring & Code Cleanup](./entry9.md)
+* [Entry 8 - Attempted seam fix & Biome Texture Blending](./entry8.md)
+* [Entry 9 - Biome Texturing/Blending Fix, Refractoring & Code Cleanup](./entry9.md)
