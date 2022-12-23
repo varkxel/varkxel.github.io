@@ -12,5 +12,5 @@ This is a set of procedural tools designed to generate maps for a future racing 
 * [Entry 7 - Biome Revamp (Now with Blending!)](./entry7.md)
 * [Entry 8 - Attempted seam fix & Biome Texture Blending](./entry8.md)
 * [Entry 9 - Biome Texturing/Blending Fix, Refractoring & Code Cleanup](./entry9.md)
-* [Entry 10 - Critical Evaluation of the Implementation](./entry10.md)
+* [Entry 10 - Final Touches & Critical Evaluation of the Implementation](./entry10.md)
 * [Bibliography](./bibliography.md)
