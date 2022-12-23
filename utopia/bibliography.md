@@ -3,6 +3,8 @@
 (Accessed 07/11/22)
 * [Anon - "Normalizing Gradient Noise"](https://noiseposti.ng/posts/2021-03-22-Normalizing-Gradient-Noise.html)
 (Accessed 07/11/22)
+* [Anon - "The Perlin Problem: Moving Past Square Noise"](https://noiseposti.ng/posts/2022-01-16-The-Perlin-Problem-Moving-Past-Square-Noise.html)
+(Accessed 19/11/22)
 * [Anon - "Procedural generation: fractal noise"](https://dens.website/articles/procedural-generation/fractal-noise)
 (Accessed 07/11/22)
 * [Cordes, P. StackOverflow Post](https://stackoverflow.com/a/35270026)

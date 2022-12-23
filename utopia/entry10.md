@@ -12,6 +12,10 @@ The decision to develop the project with the Burst compiler and Parallelism in m
 definitely added to the complexity of the project, but the decision seems to have paid off
 from benchmarking on my end and externally with friends running the project.
 
+I frequently ran into issues where data wasn't being passed around to the correct job,
+or back from jobs correctly, along with having to manage memory myself.
+This alone probably at least doubled the development time of the project.
+
 Throughout the project, there were many revamps to systems to allow for further flexibility,
 which has kept the code very modular and the system customisable.
 This I feel has made sure that the project runs quick and is flexible.
@@ -65,6 +69,24 @@ There are also very obvious seams between each chunk due to the issues faced ear
 This seems unavoidable for now, without changing the core noise algorithm
 or writing a seam stitching job. Both of which are currently out of scope for now.
 
+Masks also weren't implemented due to the amount of issues that had to be solved between
+all the other areas of the project, adding another module on top would only help
+confuse things during development.
+
+## Generation Quality
+After reading [this blog post](https://noiseposti.ng/posts/2022-01-16-The-Perlin-Problem-Moving-Past-Square-Noise.html),
+I feel that my current implementation of Fractal Simplex Noise was the correct algorithm
+to implement for terrain generation.
+Especially using Simplex over Perlin noise.
+
+This is because Simplex noise is free from the "squareness" of the results of perlin, which can look unnatural.
+The implementation used / adapted also made use of domain rotation,
+which further reduced noise artefacts.
+
+![Example of Squareness](https://noiseposti.ng/assets/images/the-perlin-problem-moving-past-square-noise/coastlines_perlin_highlighted.png)
+
+Image source from [noiseposti.ng by KdotJPG](https://noiseposti.ng/posts/2022-01-16-The-Perlin-Problem-Moving-Past-Square-Noise.html).
+
 ## Hardware Compatibility
 ### Slower on non-AVX hardware
 Since the world generator was designed around generating huge islands,
@@ -87,3 +109,19 @@ This will limit the program to running on only newer mobile devices and graphics
 but could be worked around in the future with an alternative code path
 and may be worth the effort for mobile devices.
 
+## Conclusion
+Overall, I feel that the current implementation is a very solid base to build upon in the future.
+All the core features are implemented well and extendable,
+future work is all about just improving on these features.
+
+Some issues like the seams between the chunks desperately need attention,
+but the core work is there.
+Masks also could be implemented quickly in the future too, as the code is there,
+though an upscaling algorithm should be used first to avoid VRAM memory issues with huge scenes,
+since the mask is generated all at once.
+
+Hitches could be reduced by allowing for streaming in/out chunks and generating on the fly,
+rather than all at the start.
+
+I would also like to utilise this project in a game to find further issues to fix and features to add,
+along with being able to profile the world generator in a real scenario.
