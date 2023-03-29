@@ -1,8 +1,31 @@
-#two-column-container
+body
 {
-    width: 50%;
+	text-align: center;
+	margin: 0px;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#left
+{
+	float: left;
+}
+
+#right
+{
+	float: right;
+}
+
+@media only screen and (min-width: 25cm)
+{
+	#left, #right
+	{
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 25cm)
+{
+	#left, #right
+	{
+		width: 100%;
+	}
 }
