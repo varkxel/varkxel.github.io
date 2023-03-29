@@ -1,5 +1,3 @@
-import { updateSize } from "./UpdateSize.js"
-
 const canvas_id = "gl-water";
 
 function main()
