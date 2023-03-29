@@ -1,0 +1,12 @@
+.column-left { float: left; }
+.column-right { float: right; }
+
+@media screen and (orientation:landscape)
+{
+	.column-left, .column-right { width: 50%; }
+}
+
+@media screen and (orientation:portrait)
+{
+	.column-left, .column-right { width: 100%; }
+}
