@@ -30,7 +30,7 @@ body
 	}
 }
 
-@media only screen and (max-width: 25cm)
+@media (max-width: 25cm)
 {
 	.left, .right
 	{
