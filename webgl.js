@@ -1,22 +1,13 @@
-// Test code from:
-// https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
+import { updateSize } from "./UpdateSize.js"
 
-main();
-
-var canvas;
-
-function updateSize()
-{
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-}
+const canvas_id = "gl-water";
 
 function main()
 {
-	canvas = document.querySelector("#gl");
-	updateSize();
+	updateSize(canvas_id);
 
 	// Initialize the GL context
+	const canvas = document.getElementById(canvas_id);
 	const gl = canvas.getContext("webgl");
 
 	// Only continue if WebGL is available and working
@@ -31,3 +22,6 @@ function main()
 	// Clear the color buffer with specified clear color
 	gl.clear(gl.COLOR_BUFFER_BIT);
 }
+
+// Main function
+main();

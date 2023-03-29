@@ -4,11 +4,12 @@
 		<meta charset="utf-8" />
 		<title>Varkxel's Site</title>
 		<link rel="stylesheet" href="style.css"/>
+		<script src="UpdateSize.js"></script>
 		<script src="webgl.js" type="module" defer></script>
 	</head>
-	<body onresize="updateSize()">
-		<div id="global-bg">
-			<canvas id="gl"></canvas>
+	<body>
+		<div id="global-bg" onresize='updateSize("gl-water")'>
+			<canvas id="gl-water"></canvas>
 		</div>
 		<div class="left">
 			<h1>column 1</h1>
