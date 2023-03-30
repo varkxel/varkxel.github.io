@@ -2,16 +2,31 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+
 		<title>Varkxel's Site</title>
+
+		<!-- Style Sheets -->
 		<link rel="stylesheet" href="Columns.css" />
 		<link rel="stylesheet" href="Style.css" />
 
-		<script src="UpdateSize.js"></script>
-		<script src="webgl.js" type="module" defer></script>
+		<!-- Hide JS content on browsers that don't support JS. -->
+		<noscript>
+			<link rel="stylesheet" href="Style_NoJS.css" />
+		</noscript>
+
+		<!-- Scripts -->
+		<script src="Canvas.js"></script>
+		<script src="Backgrounds.js"></script>
+		<script>
+			PickBackground(function ()
+			{
+				InitialiseBackground("global-bg-canvas");
+			});
+		</script>
 	</head>
-	<body>
-		<div id="global-bg" onresize='updateSize("gl-water")'>
-			<canvas id="gl-water"></canvas>
+	<body onresize='UpdateSize("global-bg-canvas")'>
+		<div id="global-bg" class="js-only">
+			<canvas id="global-bg-canvas"></canvas>
 		</div>
 		<div class="column-left">
 			<h1>column 1</h1>

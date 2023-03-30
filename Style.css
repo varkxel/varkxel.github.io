@@ -1,5 +1,7 @@
 body
 {
+	background-color: #222;
+
 	text-align: center;
 	margin: 0px;
 }
@@ -10,4 +12,9 @@ body
 	z-index: -1000;
 	width: 100%;
 	height: 100%;
+}
+
+#global-bg-nojs
+{
+	background-color: #222;
 }

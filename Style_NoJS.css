@@ -1,0 +1,6 @@
+/*
+	This StyleSheet contains all the styling applied when JS is NOT enabled.
+*/
+
+/* Disable elements that rely on JS. */
+.js-only { display: none !important; }
