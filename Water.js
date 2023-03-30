@@ -4,7 +4,7 @@ function InitialiseBackground(canvas_id)
 	UpdateSize(canvas_id);
 
 	// Initialize the GL context
-	const gl = CreateContext(canvas_id)
+	const gl = CreateContext(canvas_id);
 
 	// Set clear color to black, fully opaque
 	gl.clearColor(1.0, 0.0, 0.0, 1.0);
