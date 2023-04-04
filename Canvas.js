@@ -1,9 +1,10 @@
 
-function CreateContext(canvas_id)
+function CreateContext(canvas_id, loop)
 {
 	// Get the given canvas
 	const canvas = document.getElementById(canvas_id);
-	if(canvas === null) {
+	if(canvas === null)
+	{
 		alert
 		(
 			`Unable to find canvas with the given ID \"${canvas_id}\".\n` +
@@ -24,6 +25,8 @@ function CreateContext(canvas_id)
 		);
 		return null;
 	}
+
+	requestAnimationFrame(loop);
 	return gl;
 }
 
