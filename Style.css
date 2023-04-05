@@ -21,27 +21,17 @@ body
 	background-color: #222;
 }
 
-.header {
-	padding-top: 48px;
-	padding-bottom: 32px;
+.row {
+	display: flex;
+
+	margin-bottom: 2em;
 }
 
-.column-left, .column-right {
-	padding-top: 48px;
-	padding-bottom: 32px;
-	margin-left: 5%;
-	margin-right: 5%;
+.column {
+	flex: 1;
 }
 
-.column-left { float: left; }
-.column-right { float: right; }
-
-@media screen and (orientation:landscape)
-{
-	.column-left, .column-right { width: 40%; }
-}
-
-@media screen and (orientation:portrait)
-{
-	.column-left, .column-right { width: 100%; }
+.content {
+	padding-left: 3em;
+	padding-right: 3em;
 }
