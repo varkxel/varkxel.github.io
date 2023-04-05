@@ -7,7 +7,7 @@ function InitialiseBackground(canvas_id)
 	const gl = CreateContext(canvas_id, WaterLoop);
 
 	// Set clear color to black, fully opaque
-	gl.clearColor(1.0, 0.0, 0.0, 1.0);
+	gl.clearColor(0.4, 0.4, 1.0, 1.0);
 	// Clear the color buffer with specified clear color
 	gl.clear(gl.COLOR_BUFFER_BIT);
 }

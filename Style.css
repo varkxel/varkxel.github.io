@@ -2,6 +2,8 @@ body
 {
 	background-color: #222;
 
+	font-family: sans-serif;
+
 	text-align: center;
 	margin: 0px;
 }
@@ -17,4 +19,29 @@ body
 #global-bg-nojs
 {
 	background-color: #222;
+}
+
+.header {
+	padding-top: 48px;
+	padding-bottom: 32px;
+}
+
+.column-left, .column-right {
+	padding-top: 48px;
+	padding-bottom: 32px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.column-left { float: left; }
+.column-right { float: right; }
+
+@media screen and (orientation:landscape)
+{
+	.column-left, .column-right { width: 40%; }
+}
+
+@media screen and (orientation:portrait)
+{
+	.column-left, .column-right { width: 100%; }
 }
