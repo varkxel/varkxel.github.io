@@ -24,14 +24,17 @@ body, a, a:active
 	background-color: #222;
 }
 
-.row
+@media screen and (orientation: landscape)
 {
-	display: flex;
-}
+	.row
+	{
+		display: flex;
+	}
 
-.column
-{
-	flex: 1;
+	.column
+	{
+		flex: 1;
+	}
 }
 
 .content
