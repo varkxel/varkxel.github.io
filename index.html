@@ -23,6 +23,11 @@
 			});
 		</script>
 	</head>
+	<header>
+		<a href="./" class="button" id="selected-button">Home</a>
+		<a href="./utopia/" class="button">Project Utopia</a>
+		<a href="./mobbers/" class="button">Mobbers</a>
+	</header>
 	<body onresize='UpdateSize("global-bg-canvas")'>
 		<div id="global-bg" class="js-only">
 			<canvas id="global-bg-canvas"></canvas>
@@ -32,10 +37,13 @@
 				<div class="content-background">
 					<div class="content">
 						<h1>Myles's Portfolio Site</h1>
-						<h2>
-							I am a Rendering Engineer and an Engine / Tools programmer.
+						<p>
+							I am a Graphics, Engine and Tools programmer.
 							<br>
-							I enjoy working on technology for games, and working on / driving cars.
+							I enjoy working on technology for games, cars and generally building / working on anything.
+						</p>
+						<h2>
+							Below are some of the projects which I have worked on:
 						</h2>
 					</div>
 				</div>
@@ -59,25 +67,41 @@
 							Now, the project is being built into a full procedurally generated racing game,
 							along with tweaks to the generator to improve usability/performance.
 						</p>
-						<h3>Click on this tile for Project Utopia's development blog.</h3>
+						<a href="./utopia/" class="button">Project Utopia Overview</a>
 					</div>
 				</a>
 			</div>
 			<div class="column" style="background: url('mobbers_icon.png') no-repeat center center; background-size: cover;">
-				<a href="https://septagramgames.co.uk/">
+				<a href="./mobbers/">
 					<div class="content">
 						<h1>Mobbers</h1>
 						<h2>A chaotic 4 player twin-stick dungeon raiding roguelike.</h2>
-						<p>
-							I work as the Tools/Engine programmer and Rendering engineer on this project.
-						</p>
-						<p>
-							The main major systems I developed on this project (so far),
-							are the Input/Movement System, Entities/Player Management System and the Item System.
-						</p>
-						<h3>Click on this tile for the game's website and for more details.</h3>
+						
+						<p><br></p>
+						<a href="https://septagramgames.co.uk/" class="button">Septagram Games Website</a>
+						<a href="./mobbers/" class="button">Development Overview</a>
+						<a href="https://store.steampowered.com/app/2452590/Mobbers/" class="button">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" class="icon">
+							Steam Page
+						</a>
 					</div>
 				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column" style="background: url('asteroids_icon.png') no-repeat center center; background-size: cover;">
+				<div class="content">
+					<h1>Asteroids</h1>
+					<h2>A simple recreation of the old arcade game "Asteroids" in Unity.</h2>
+					<p>This was created as an Undergraduate University project.</p>
+					<p>
+						The project showcases custom shaders for the skybox, which were an extra touch I did for fun.
+						<br>
+						This also contains some of my first attempts at 3D modelling for the ships, asteroids and destruction particles.
+					</p>
+					<h2>The game is available to play at the links below:</h2>
+					<a href="./asteroids/" class="button">Play in Browser</a>
+				</div>
 			</div>
 		</div>
 	</body>
