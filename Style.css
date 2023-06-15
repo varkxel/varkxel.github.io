@@ -14,11 +14,15 @@ body, a, a:active
 h1
 {
 	font-size: 4em;
+	margin-top: 0px;
+	padding-top: 0.75em;
+	padding-bottom: 1em;
 }
 
 h2
 {
 	font-size: 2em;
+	padding-bottom: 0.5em;
 }
 
 p
@@ -53,16 +57,6 @@ p
 .content-background
 {
 	background-color: #22222277;
-}
-
-h1
-{
-	padding-bottom: 1em;
-}
-
-h2
-{
-	padding-bottom: 0.5em;
 }
 
 .button
