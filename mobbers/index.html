@@ -10,11 +10,27 @@
 		<noscript>
 			<link rel="stylesheet" href="../Style_NoJS.css" />
 		</noscript>
+
+		<script src="../Activator.js"></script>
 	</head>
     <header>
-		<a href="../" class="button">Home</a>
-		<a href="../utopia/" class="button">Project Utopia</a>
-		<a href="./" class="button" id="selected-button">Mobbers</a>
+		<div class="menubar" id="menubar-header">
+			<a href="../" class="button">Home</a>
+			<a href="../utopia/" class="button">Project Utopia</a>
+			<a href="./" class="button" id="selected-button">Mobbers</a>
+			<a href="../asteroids/" class="button">Asteroids</a>
+			<a class="button" id="menubar-back" onclick="Deactivate('menubar-header'); Activate('menubar-header-button')">Back</a>
+		</div>
+		<div class="js-only">
+			<div class="menubar-button" id="menubar-header-button" onclick="Activate('menubar-header'); Deactivate('menubar-header-button');">
+				<!-- Manually create a burger box icon... lol. -->
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%; margin-top: 25%;"></div>
+				<div style="width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%;"></div>
+			</div>
+		</div>
 	</header>
     <body>
 		<video id="global-bg" autoplay muted loop>

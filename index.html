@@ -12,6 +12,7 @@
 		</noscript>
 
 		<!-- Scripts -->
+		<script src="Activator.js"></script>
 		<script src="Canvas.js"></script>
 		<script src="WebGL.js"></script>
 		<script src="Camera.js"></script>
@@ -24,9 +25,23 @@
 		</script>
 	</head>
 	<header>
-		<a href="./" class="button" id="selected-button">Home</a>
-		<a href="./utopia/" class="button">Project Utopia</a>
-		<a href="./mobbers/" class="button">Mobbers</a>
+		<div class="menubar" id="menubar-header">
+			<a href="./" class="button" id="selected-button">Home</a>
+			<a href="./utopia/" class="button">Project Utopia</a>
+			<a href="./mobbers/" class="button">Mobbers</a>
+			<a href="./asteroids/" class="button">Asteroids</a>
+			<a class="button" id="menubar-back" onclick="Deactivate('menubar-header'); Activate('menubar-header-button')">Back</a>
+		</div>
+		<div class="js-only">
+			<div class="menubar-button" id="menubar-header-button" onclick="Activate('menubar-header'); Deactivate('menubar-header-button');">
+				<!-- Manually create a burger box icon... lol. -->
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%; margin-top: 25%;"></div>
+				<div style="width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="width: 50%; height: 10%; margin-left: 25%;"></div>
+				<div style="background-color: #fff7; width: 50%; height: 10%; margin-left: 25%;"></div>
+			</div>
+		</div>
 	</header>
 	<body onresize='UpdateSize("global-bg-canvas")'>
 		<div id="global-bg" class="js-only">
@@ -42,9 +57,7 @@
 							<br>
 							I enjoy working on technology for games, cars and generally building / working on anything.
 						</p>
-						<h2>
-							Below are some of the projects which I have worked on:
-						</h2>
+						<h2>Below are some of the projects which I have worked on:</h2>
 					</div>
 				</div>
 			</div>
