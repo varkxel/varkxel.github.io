@@ -54,5 +54,69 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="column">
+				<div class="content-background">
+					<div class="content">
+						<h1>Fully Modular Entity System</h1>
+						<p>
+							Mobbers features a fully modular Entity system,
+							in which both the players and NPCs within the game can all be controlled and utilise all of the same systems.<br>
+							This firstly drastically increases the ease of maintenance from the cutting down of duplicate code.
+							Though, this also has the advantage of enemies being able to use the same items as the player,
+							along with the enemies acting in the same way as the player.
+						</p>
+						<p>
+							This entity system is the framework of which all the other player-oriented systems
+							(such as the <strong>Input</strong> and <strong>Item</strong> System) are built around.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="content-background">
+					<div class="content">
+						<h1>Input System</h1>
+						<p>
+							The Input System was designed from the start of the project to handle 4 player co-op,
+							though has seen many iterations throughout the development of the project.
+						</p>
+						<p>
+							Originally, this system was designed around the old Unity input system,
+							which worked well but was a nightmare to extend and didn't support haptics.
+						</p>
+						<p>
+							The rewrite then used the new Unity input system, using the built-in components.
+							This somewhat worked but was buggy and didn't have the features we wanted for drop-in,
+							like being unable to customise how players were added.
+						</p>
+						<p>
+							After this, the rewrite ended up using custom components built around the InputUser system on the new Input System.
+							This ended up being the best solution for the project.
+							The rewrite allowed for easy controller binding changes, along with decoupling players from IDs.
+							Now the InputUser tracks the player with their bound devices and can handle issues such as controllers re-connecting.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="content-video">
+					<video class="video-element" style="background-color: #22222277" autoplay muted loop>
+						<source src="mobbers_input.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="content-background">
+					<div class="content">
+						<h1>Item System</h1>
+					</div>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
