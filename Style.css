@@ -32,26 +32,14 @@ p
 	z-index: -1000;
 	min-width: 100%;
 	min-height: 100%;
-	left: 0;
-	bottom: 0;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #global-bg-nojs
 {
 	background-color: #222;
-}
-
-@media screen and (orientation: landscape)
-{
-	.row
-	{
-		display: flex;
-	}
-
-	.column
-	{
-		flex: 1;
-	}
 }
 
 .content
@@ -122,4 +110,24 @@ header .button
 {
 	width: 1em;
 	height: 1em;
+}
+
+@media screen and (orientation: landscape)
+{
+	.row
+	{
+		display: flex;
+	}
+
+	.column
+	{
+		flex: 1;
+	}
+}
+
+@media screen and (orientation: portrait) {
+	header
+	{
+		visibility: hidden;
+	}
 }
