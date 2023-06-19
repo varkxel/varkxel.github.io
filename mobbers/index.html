@@ -103,7 +103,7 @@
 			</div>
 			<div class="column">
 				<div class="content-video">
-					<video class="video-element" style="background-color: #22222277" autoplay muted loop>
+					<video class="video-element" style="background-color: #22222277" autoplay muted loop controls>
 						<source src="mobbers_input.mp4" type="video/mp4">
 					</video>
 				</div>
@@ -114,7 +114,37 @@
 				<div class="content-background">
 					<div class="content">
 						<h1>Item System</h1>
+						<p>
+							Mobbers also features a modular and extensible item system.<br>
+							This was designed from the ground up to allow for many weapon variations,
+							along with items to be able to interact with the player and other items.
+						</p>
+						<h2>Weapons</h2>
+						<p>
+							Weapons within Mobbers utilise swappable modules, which allow for items to be added quickly and easily.
+							This also allows for items to change weapon behaviour via swapping / replacing the module.
+						</p>
+						<p>
+							Currently, these modular parts of the weapon include trajectories, collision behaviour, fire trigger behaviour and spray patterns.
+						</p>
+						<h2>Modifiers</h2>
+						<p>
+							Modifiers are a special type of item that allow for the addition, multiplication or replacement
+							of any attribute-marked variable on any component on the entity which picks it up.
+						</p>
+						<p>
+							This system allowed for simple item creation with minimal extra code per-modifier,
+							though it currently has a performance penalty from JIT compilation per modified value type / operation.<br>
+							This system most likely will be revamped in the future to remove this limitation and to increase user-friendliness.
+						</p>
 					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="content-video">
+					<video class="video-element" style="background-color: #22222277" autoplay muted loop controls>
+						<source src="mobbers_modifier.mp4" type="video/mp4">
+					</video>
 				</div>
 			</div>
 		</div>
