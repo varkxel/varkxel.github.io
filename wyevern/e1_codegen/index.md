@@ -30,3 +30,4 @@ As I continued working on the maths library, I realised I'd need more use cases 
 And thus, I decided to try and make this project re-usable.
 
 ## A second proper attempt
+For this new system, I decided to continue using C, providing an API with a declarative syntax.
