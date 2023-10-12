@@ -38,16 +38,46 @@
 		<div class="row">
 			<div class="column">
 				<div class="content">
-					<h1>Wyevern Development Blog</h1>
-					<h2>Wyevern is a Game Engine designed around Job-ifying everything.</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="column" style="background: url('./e1_codegen/CodeGen_Result.png') no-repeat center center; background-size: cover;">
-				<div class="content">
-					<h2>A naive attempt into code generation.</h2>
-					<a href="./e1_codegen" class="button">View Blog Post</a>
+					<h1>The Wyevern Development Blog</h1>
+					<p>
+						Wyevern is my Game Engine pet project, where I slowly develop a toolset to
+						which what eventually will become (to me, at least) the ultimate game engine.
+					</p>
+					<h2>Core Design Principles</h2>
+					<p>
+						This game engine is developed around certain core design principles,
+						in which I have decided during my use, love and frustration of other game engines on the market today.
+					</p>
+					<h3>Modularity and Extendability</h3>
+					<p>The game engine should be highly modular - as modular as possible in fact.</p>
+					<p>
+						Most engines on the market today are absolutely amazing at just doing anything you throw at them for most common use cases.
+						This is obviously really good for everyone.
+						The problem with this however is that you can't switch off or disable all the features you don't actually want or require,
+						leading to bloated projects, longer iteration times and just generally a slower product.
+						Plus, I just generally find that I don't use 90% of the features of most mainstream engines nowadays,
+						I end up rolling out my own. Maybe that's why I'm developing this engine??
+					</p>
+					<p>
+						My goal for this engine is that if there's a part of the engine you're just not interested in,
+						you can just not include it. Everything is a module!
+						This will also help out with customisation.
+						For example, if you don't want to roll the renderer that comes with the engine - just remove and fork it!
+					</p>
+					<h3>No editor, unless you want it.</h3>
+					<p>
+						I aim for the datatypes used by this engine to be implemented in a scripting language, rather than as pure data.
+						The reason for this is to be able to programatically create levels, without ever having touching the editor.
+					</p>
+					<p>
+						Anything you can do in the editor will boil down to a set of commands in a console.
+						This will also help to make sure what happens within the editor is what happens in the game.
+					</p>
+					<h3>Threaded by design</h3>
+					<p>
+						Code written for the engine should revolve around the job system in order to maximise the available performance
+						and minimise single-core workload for all projects.
+					</p>
 				</div>
 			</div>
 		</div>
